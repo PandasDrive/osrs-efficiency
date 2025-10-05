@@ -4,6 +4,8 @@ import net.runelite.api.Client;
 import net.runelite.api.InventoryID;
 import net.runelite.api.Item;
 import net.runelite.api.ItemContainer;
+import net.runelite.api.Quest;
+import net.runelite.api.QuestState;
 import net.runelite.api.Skill;
 
 import javax.inject.Inject;
@@ -39,5 +41,15 @@ public class StateChecker
     public int getSkillLevel(Skill skill)
     {
         return client.getRealSkillLevel(skill);
+    }
+
+    public boolean isCooksAssistantComplete()
+    {
+        return Quest.COOKS_ASSISTANT.getState(client) == QuestState.FINISHED;
+    }
+
+    public boolean isPriestInPerilComplete()
+    {
+        return Quest.PRIEST_IN_PERIL.getState(client) == QuestState.FINISHED;
     }
 }

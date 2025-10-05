@@ -62,3 +62,11 @@ tasks.register('shadowJar', Jar) {
 	archiveClassifier.set('shadow')
 	archiveFileName.set("${rootProject.name}-${project.version}-all.jar")
 }
+
+tasks.register('runClient', JavaExec) {
+    group = "Verification"
+    description = "Runs the RuneLite client with the plugin loaded"
+    classpath = sourceSets.test.runtimeClasspath
+    mainClass.set('com.osrsefficiency.progressionassistant.ProgressionAssistantPluginTest')
+    jvmArgs '-ea'
+}
